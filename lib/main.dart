@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practica_app/helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,17 +28,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
+    // final RatioCalculator ratioCalculator = RatioCalculator();
+    // ratioCalculator.updateRatio(context: context, figmaWidth: 390, figmaHeight: 844);
+    // print("${ratioCalculator.calculateWidth(310)} figma");
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(top: 65, left: 25),
+              padding: const EdgeInsets.only(
+                top: 21,
+              ),
+              margin: EdgeInsets.only(left: 25, right: 55),
               child: Image(
                 image: AssetImage("assets/images/img.png"),
-                width: 310,
-                height: 187,
+                width: 286,
+                height: 166,
               ),
             ),
             SizedBox(
@@ -51,7 +60,11 @@ class _HomePageState extends State<HomePage> {
                   margin: EdgeInsets.only(left: 29),
                   child: Text(
                     "Login Details",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Outfit",
+                    ),
                   ),
                 )
               ],
@@ -79,6 +92,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     style: TextStyle(
                         color: Color(0xff635C5C),
+                        fontFamily: "Outfit",
                         fontWeight: FontWeight.w500,
                         fontSize: 16),
                   ),
@@ -104,6 +118,7 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyle(
                         color: Color(0xff635C5C),
                         fontWeight: FontWeight.w500,
+                        fontFamily: "Outfit",
                         fontSize: 16),
                   ),
                 ),
@@ -111,11 +126,14 @@ class _HomePageState extends State<HomePage> {
                   height: 6,
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 227, right: 31),
+                  //width: 132,
+                  //height: 20,
+                  margin: EdgeInsets.only(right: 31),
                   child: Text(
                     "Forgot Password ?",
                     style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                      //fontWeight: FontWeight.w500,
+                      fontFamily: "Outfit",
                       color: Color(0xff635C5C),
                       fontSize: 16,
                     ),
@@ -123,44 +141,114 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            SizedBox(height: 34,),
+            SizedBox(
+              height: 34,
+            ),
             GestureDetector(
-                    onTap: () {
-
-                    },
+              onTap: () {},
+              child: Container(
+                height: 60,
+                margin: EdgeInsets.only(left: 28, right: 32),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Color(0xff0B6EFE),
+                ),
+                child: Center(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "Outfit",
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 34,
+            ),
+            Center(
+              child: Container(
+                //width: 100,
+                //height: 15,
+                //margin: EdgeInsets.only(left: 145, right: 161),
+                child: Text(
+                  "Or Sign up With",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontFamily: "Outfit",
+                    color: Color(0xff555252),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 32,
+            ),
+            // iconos-----------------------------------------------------------------------------------
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {},
                     child: Container(
-                      height: 60,
-                      margin: EdgeInsets.only(left: 28, right: 32),
+                      width: 52,
+                      height: 52,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Color(0xff0B6EFE),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 24,
-                          ),
+                        shape: BoxShape.circle,
+                        color: Color(0xffECE9EC),
+                        border: Border.all(
+                          color: Color(0xffF89AEE),
                         ),
+                      ),
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-            // Center(
-            //   child: ElevatedButton(
-            //     onPressed: () {
-
-            //     },
-            //     child: Text(
-            //       "Login",
-            //       style: TextStyle(
-            //         color: Colors.blue,
-            //       ),
-            //     ),
-            //   ),
-            //   // color
-            // ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 52,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xffECE9EC),
+                      ),
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: 52,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xffECE9EC),
+                      ),
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

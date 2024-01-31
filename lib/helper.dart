@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+
+class RatioCalculator {
+  static final RatioCalculator _singleton = RatioCalculator._internal();
+
+  late Size screenSize;
+  late double figmaWidth;
+  late double figmaHeight;
+
+  factory RatioCalculator() {
+    return _singleton;
+  }
+
+  void updateRatio({
+  required BuildContext context,
+  required double figmaWidth,
+  required double figmaHeight,
+  }) {
+  _singleton.screenSize = MediaQuery.of(context).size;
+  _singleton.figmaWidth = figmaWidth;
+  _singleton.figmaHeight = figmaHeight;
+  }
+
+  RatioCalculator._internal();
+
+  double get aspectRatio => screenSize.width / screenSize.height;
+
+  Size calculateSize(Size originalSize) =>
+      Size(originalSize.width * aspectRatio, originalSize.height);
+
+  double calculateWidth(double originalWidth) =>
+      originalWidth * aspectRatio / figmaWidth;
+
+  double calculateHeight(double originalHeight) =>
+      originalHeight * aspectRatio / figmaHeight;
+}
