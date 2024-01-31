@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:practica_app/helper.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,9 +31,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
+    //aqui llamamos a la clase responsive. antes de todo se instala en el pubspec.yaml
     final RatioCalculator ratioCalculator = RatioCalculator();
-    ratioCalculator.updateRatio(context: context, figmaWidth: 390, figmaHeight: 844);
+    ratioCalculator.updateRatio(
+      context: context,
+      figmaWidth: 390,
+      figmaHeight: 844,
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -68,19 +75,21 @@ class _HomePageState extends State<HomePage> {
                 )
               ],
             ),
+            SizedBox(
+              height: ratioCalculator.calculateHeight(18),
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 18),
+                  width: ratioCalculator.calculateWidth(330),
+                  height: ratioCalculator.calculateHeight(60),
                   margin: EdgeInsets.only(left: 29, right: 31),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Username, email & phone number",
                       fillColor: Colors.white,
                       filled: true,
-                      //margin: EdgeInsets.only(left: 29, right: 31),
-                      contentPadding: EdgeInsets.all(25),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
@@ -96,17 +105,18 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 16),
                   ),
                 ),
-                SizedBox(height: ratioCalculator.calculateHeight(1),),
+                SizedBox(
+                  height: ratioCalculator.calculateHeight(11),
+                ),
                 Container(
-                  // padding: EdgeInsets.symmetric(vertical: ),
+                  width: ratioCalculator.calculateWidth(330),
+                  height: ratioCalculator.calculateHeight(60),
                   margin: EdgeInsets.only(left: 28, right: 32),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Password",
                       fillColor: Colors.white,
                       filled: true,
-                      //margin: EdgeInsets.only(left: 29, right: 31),
-                      contentPadding: EdgeInsets.all(25),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: BorderSide(
@@ -144,45 +154,70 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: ratioCalculator.calculateHeight(34),
             ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: ratioCalculator.calculateHeight(60),
-                width: ratioCalculator.calculateWidth(330),
-                margin: EdgeInsets.only(left: 28, right: 32),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Color(0xff0B6EFE),
-                ),
-                child: Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: "Outfit",
-                      fontSize: 24,
+            ButtonBar(
+              children: [
+                Container(
+                  height: ratioCalculator.calculateHeight(60),
+                  width: ratioCalculator.calculateWidth(330),
+                  margin: EdgeInsets.only(left: 28, right: 32),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Color(0xff0B6EFE),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: "Outfit",
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
             SizedBox(
               height: ratioCalculator.calculateHeight(34),
             ),
             Center(
-              child: Container(
-                //width: ratioCalculator.calculateWidth(84),
-                //height: ratioCalculator.calculateHeight(15),
-                //margin: EdgeInsets.only(left: 145, right: 161),
-                child: Text(
-                  "Or Sign up With",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontFamily: "Outfit",
-                    color: Color(0xff555252),
+              child: Row(
+                children: [
+                  Container(
+                    width: ratioCalculator.calculateWidth(132),
+                    height: ratioCalculator.calculateHeight(3),
+                    margin: EdgeInsets.only(left: 6, right: 6),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [ Colors.white, Color(0xff0B6EFE)],
+                      ),
+                    ),
                   ),
-                ),
+                  Container(
+                    //width: ratioCalculator.calculateWidth(84),
+                    //height: ratioCalculator.calculateHeight(15),
+                    //margin: EdgeInsets.only(left: 145, right: 161),
+                    child: Text(
+                      "Or Sign up With",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontFamily: "Outfit",
+                        color: Color(0xff555252),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: ratioCalculator.calculateWidth(132),
+                    height: ratioCalculator.calculateHeight(3),
+                    margin: EdgeInsets.only(left: 6, right: 6),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xff0B6EFE), Colors.white],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             SizedBox(
@@ -203,11 +238,13 @@ class _HomePageState extends State<HomePage> {
                         color: Color(0xffECE9EC),
                         border: Border.all(
                           color: Color(0xffF89AEE),
+                          width: 0.4,
                         ),
                       ),
-                      child: Icon(
-                        Icons.favorite,
-                        color: Colors.white,
+                      child: SvgPicture.asset(
+                        "assets/icons/Google logo.svg",
+                        semanticsLabel: 'Acme Logo',
+                        fit: BoxFit.scaleDown,
                       ),
                     ),
                   ),
@@ -222,10 +259,15 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xffECE9EC),
+                        border: Border.all(
+                          color: Color(0xffF89AEE),
+                          width: 0.4,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.favorite,
-                        color: Colors.white,
+                      child: SvgPicture.asset(
+                        "assets/icons/Facbook.svg",
+                        semanticsLabel: 'Acme Logo',
+                        fit: BoxFit.scaleDown,
                       ),
                     ),
                   ),
@@ -240,16 +282,31 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xffECE9EC),
+                        border: Border.all(
+                          color: Color(0xffF89AEE),
+                          width: 0.4,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
+                      child: SvgPicture.asset(
+                        "assets/icons/Group.svg",
+                        semanticsLabel: 'Acme Logo',
+                        fit: BoxFit.scaleDown,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
+            // WaveWidget(
+            //   config: CustomConfig(durations: durations, heightPercentages: heightPercentages),
+            // ),
+            // CustomPaint(
+            //   child: Container(
+            //     height: 50,
+            //     width: 50,
+            //     color: Colors.lightBlue,
+            //   ),
+            // ),
           ],
         ),
       ),
