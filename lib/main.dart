@@ -29,9 +29,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
-    // final RatioCalculator ratioCalculator = RatioCalculator();
-    // ratioCalculator.updateRatio(context: context, figmaWidth: 390, figmaHeight: 844);
-    // print("${ratioCalculator.calculateWidth(310)} figma");
+    final RatioCalculator ratioCalculator = RatioCalculator();
+    ratioCalculator.updateRatio(context: context, figmaWidth: 390, figmaHeight: 844);
 
     return Scaffold(
       body: SafeArea(
@@ -45,12 +44,12 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(left: 25, right: 55),
               child: Image(
                 image: AssetImage("assets/images/img.png"),
-                width: 286,
-                height: 166,
+                width: ratioCalculator.calculateWidth(310),
+                height: ratioCalculator.calculateHeight(187),
               ),
             ),
             SizedBox(
-              height: 24,
+              height: ratioCalculator.calculateHeight(36),
             ),
             Row(
               //crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     "Login Details",
                     style: TextStyle(
                       fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       fontFamily: "Outfit",
                     ),
                   ),
@@ -97,6 +96,7 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 16),
                   ),
                 ),
+                SizedBox(height: ratioCalculator.calculateHeight(1),),
                 Container(
                   // padding: EdgeInsets.symmetric(vertical: ),
                   margin: EdgeInsets.only(left: 28, right: 32),
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 6,
+                  height: ratioCalculator.calculateHeight(6),
                 ),
                 Container(
                   //width: 132,
@@ -142,12 +142,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(
-              height: 34,
+              height: ratioCalculator.calculateHeight(34),
             ),
             GestureDetector(
               onTap: () {},
               child: Container(
-                height: 60,
+                height: ratioCalculator.calculateHeight(60),
+                width: ratioCalculator.calculateWidth(330),
                 margin: EdgeInsets.only(left: 28, right: 32),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -167,12 +168,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: 34,
+              height: ratioCalculator.calculateHeight(34),
             ),
             Center(
               child: Container(
-                //width: 100,
-                //height: 15,
+                //width: ratioCalculator.calculateWidth(84),
+                //height: ratioCalculator.calculateHeight(15),
                 //margin: EdgeInsets.only(left: 145, right: 161),
                 child: Text(
                   "Or Sign up With",
@@ -185,7 +186,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: 32,
+              height: ratioCalculator.calculateHeight(32),
             ),
             // iconos-----------------------------------------------------------------------------------
             Center(
@@ -195,8 +196,8 @@ class _HomePageState extends State<HomePage> {
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      width: 52,
-                      height: 52,
+                      width: ratioCalculator.calculateWidth(52),
+                      height: ratioCalculator.calculateHeight(52),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xffECE9EC),
@@ -211,13 +212,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(
-                    width: 16,
+                    width: ratioCalculator.calculateWidth(16),
                   ),
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      width: 52,
-                      height: 52,
+                      width: ratioCalculator.calculateWidth(52),
+                      height: ratioCalculator.calculateHeight(52),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xffECE9EC),
@@ -229,13 +230,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(
-                    width: 16,
+                    width: ratioCalculator.calculateWidth(16),
                   ),
                   InkWell(
                     onTap: () {},
                     child: Container(
-                      width: 52,
-                      height: 52,
+                      width: ratioCalculator.calculateWidth(52),
+                      height: ratioCalculator.calculateHeight(52),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xffECE9EC),

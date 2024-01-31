@@ -29,8 +29,8 @@ class RatioCalculator {
       Size(originalSize.width * aspectRatio, originalSize.height);
 
   double calculateWidth(double originalWidth) =>
-      originalWidth * aspectRatio / figmaWidth;
+      (originalWidth * screenSize.width) / figmaWidth;
 
   double calculateHeight(double originalHeight) =>
-      originalHeight * aspectRatio / figmaHeight;
+      (originalHeight * screenSize.height) / figmaHeight;
 }
