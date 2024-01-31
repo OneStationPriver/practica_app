@@ -114,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                     height: ratioCalculator.calculateHeight(60),
                     margin: EdgeInsets.only(left: 28, right: 32),
                     child: TextField(
+                      obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Password",
                         fillColor: Colors.white,
